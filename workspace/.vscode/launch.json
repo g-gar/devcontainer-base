@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/workspace",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.ggar.app.App",
+            "args": "",
+            "projectName": "test"
+        }
+    ]
+}

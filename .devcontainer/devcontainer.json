@@ -1,0 +1,25 @@
+{
+	"name": "Java 11",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "devcontainer",
+	"workspaceFolder": "/workspace",
+	"settings": {},
+	"extensions": [
+		"eridem.vscode-postman",
+		"vscjava.vscode-java-pack",
+		"ms-azuretools.vscode-docker",
+		"vscjava.vscode-java-debug",
+		"sohibe.java-generate-setters-getters",
+		"GabrielBB.vscode-lombok",
+		"vscjava.vscode-maven",
+		"vscjava.vscode-java-dependency",
+		"42Crunch.vscode-openapi",
+		"vscjava.vscode-spring-boot-dashboard"
+	],
+	"forwardPorts": [8080, 8081],
+	"remoteUser": "vscode",
+	"postCreateCommand": "cd /workspace && git init && git submodule init && git submodule update --init",
+	"shutdownAction": "stopCompose"
+}

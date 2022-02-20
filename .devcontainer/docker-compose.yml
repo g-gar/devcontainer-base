@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: dockerfile/devcontainer.dockerfile
+      args:
+        VARIANT: "11"
+        INSTALL_MAVEN: "true"
+        MAVEN_VERSION: "3.8.4"
+        INSTALL_GRADDLE: "false"
+        REPOSITORIES:
+          https://github.com/g-gar/traveloh
+          https://github.com/g-gar/fabrik
+    user: vscode
+    networks:
+      - br0
+    volumes:
+      - ../workspace:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  sqlserver0:
+    image: mcr.microsoft.com/mssql/server
+    hostname: sqlserver0
+    container_name: sqlserver0
+    user: '1000'
+    networks:
+      - br0
+    ports:
+      - 1433:1433
+    volumes:
+      - ./.volumes/mssql/data:/var/opt/mssql/data
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: PasswordO1.
+      MSSQL_PID: Developer
+
+networks:
+  br0:
+    driver: bridge
